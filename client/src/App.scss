@@ -1,0 +1,179 @@
+.App {
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+}
+.slots {
+  max-width: 500px;
+  margin: auto;
+  a {
+    color: #000;
+    border: 2px solid #000;
+    border-radius: 4px;
+    display: block;
+    font-size: 20px;
+    margin: 20px;
+    padding: 10px 20px;
+    position: relative;
+    transition: 0.4s ease-in-out;
+    &:hover {
+      background: #000;
+      color: #fff;
+    }
+  }
+}
+a.not-available {
+  border: none;
+}
+.not-available::before {
+  content: "";
+  background: #fa2121;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  animation: fillBox 1s ease-in-out forwards;
+}
+@keyframes fillBox {
+  0% {
+    width: 0;
+    height: 90%;
+    border-radius: 0 9px 35px 0;
+  }
+  100% {
+    width: 100%;
+    height: 100%;
+    border-radius: 0 0% 0% 0;
+  }
+}
+
+/* form */
+
+form {
+  display: flex;
+  justify-content: center;
+  flex-flow: column;
+  margin: auto;
+  max-width: 500px;
+  height: 100vh;
+  input {
+    border: 2px solid #000;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin: 10px auto;
+    padding: 10px;
+    width: 70%; 
+    transition: .4s ease-in-out;
+    &:focus {
+      outline: none;
+      width: 90%;
+    }
+  }
+}
+button {
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 10px;
+  transition: .4s ease-in-out;
+  &:hover {
+    background: #e8e8e8;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+  }
+  &[type="submit"] {
+    background: #2ecc71;
+  }
+  &[type="submit"]:hover {
+    background: #27b262;
+  }
+}
+
+.overlay {
+  background: rgba(255, 255, 255, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  animation: fadeIn .4s ease-in-out;
+  z-index: 999;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Disclaimer: the animated svg code below isn't my original code. I took it from codepen and modified it */
+svg {
+  width: 250px;
+}
+
+.path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 0;
+}
+
+.path.circle {
+  animation: circle 0.9s ease-in-out;
+}
+
+.path.check {
+  stroke-dashoffset: -100;
+  animation: check 0.9s 0.4s ease-in-out forwards;
+}
+
+@keyframes circle {
+  0% {
+    stroke-dashoffset: 1000;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes check {
+  0% {
+    stroke-dashoffset: -100;
+  }
+  100% {
+    stroke-dashoffset: 900;
+  }
+}
+
+.page-404 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+}
+
+@media (max-width: 480px) {
+  form {
+    input {
+      width: 83%;
+      &:focus {
+        width: 93%;
+      }
+    }
+  }
+  svg {
+    width: 70%;
+  }
+}
